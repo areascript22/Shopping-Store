@@ -10,6 +10,7 @@
     </div>
     <button (click)="clearCart()">Limpiar carrito</button>
     <button (click)="writeToDatabase()">Pagar</button>
+    <app-spinner *ngIf="loading"></app-spinner>
   </div>
   <ng-template #emptyCart>
     <p>Tu carrito esta vacío.</p>

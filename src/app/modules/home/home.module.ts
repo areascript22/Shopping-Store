@@ -12,6 +12,7 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatListModule} from '@angular/material/list';
 import {LayoutModule} from '@angular/cdk/layout';
+import {MatFormFieldModule} from '@angular/material/form-field';
 
 
 @NgModule({
@@ -28,6 +29,7 @@ import {LayoutModule} from '@angular/cdk/layout';
     MatDividerModule,
     MatListModule,
     LayoutModule,
+    MatFormFieldModule,
   ]
 })
 export class HomeModule { }

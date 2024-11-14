@@ -1,40 +1,46 @@
 <mat-toolbar>
-    <button mat-icon-button (click)="sidenav.toggle()">
-      <mat-icon *ngIf="!sidenav.opened">menu</mat-icon>
-      <mat-icon *ngIf="sidenav.opened">close</mat-icon>
-    </button>
+  <button mat-icon-button (click)="sidenav.toggle()">
+    <mat-icon *ngIf="!sidenav.opened">menu</mat-icon>
+    <mat-icon *ngIf="sidenav.opened">close</mat-icon>
+  </button>
+  <span>Tienda en linea</span>
+  <mat-icon class="example-icon" aria-hidden="false" aria-label="Example user verified icon">verified_user</mat-icon>
+  <span class="example-spacer"></span>
+  <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+    <mat-icon>favorite</mat-icon>
+  </button>
+  <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
+    <mat-icon>share</mat-icon>
+  </button>
+  
   
 </mat-toolbar>
 
-  <mat-sidenav-container>
-    <mat-sidenav>
-      <mat-nav-list>
-        <mat-list-item routerLink="/">
-          <mat-icon matListItemIcon>home</mat-icon>
-          <p>Inicio</p>
-        </mat-list-item>
-        <mat-list-item routerLink="/cart">
-          <mat-icon matListItemIcon>home</mat-icon>
-          <p>Carrito</p>
-        </mat-list-item>
-        <mat-list-item >
-          <mat-icon matListItemIcon>home</mat-icon>
-          <p>Historial</p>
-        </mat-list-item>
-       
-        <mat-list-item routerLink="/about">
-          <mat-icon matListItemIcon>info</mat-icon>
-          <p>Cerrar sesión</p>
-        </mat-list-item>
-      </mat-nav-list>
-    </mat-sidenav>
-    <mat-sidenav-content>
-      <div class="content">
-        <router-outlet>
-  
-        </router-outlet>
-      </div>
-    </mat-sidenav-content>
-  </mat-sidenav-container>
-  
-  
+<mat-sidenav-container>
+  <mat-sidenav>
+    <mat-nav-list>
+      <mat-list-item routerLink="/">
+        <mat-icon matListItemIcon>home</mat-icon>
+        <p>Inicio</p>
+      </mat-list-item>
+      <mat-list-item>
+        <mat-icon matListItemIcon>home</mat-icon>
+        <p>Ofertas</p>
+      </mat-list-item>
+      <mat-list-item>
+        <mat-icon matListItemIcon>home</mat-icon>
+        <p>Historial</p>
+      </mat-list-item>
+
+      <mat-list-item (click)="signOut()">
+        <mat-icon matListItemIcon>info</mat-icon>
+        <p>Cerrar sesión</p>
+      </mat-list-item>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <div class="content">
+      <router-outlet> </router-outlet>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

@@ -54,4 +54,45 @@ mat-toolbar button mat-icon {
   }
   
 
+
+
+  mat-toolbar {
+    display: flex;
+    align-items: center;
+  
+    .toolbar-spacer {
+      flex: 1; 
+    }
+  
+    .search-bar {
+      flex: 2; 
+      max-width: 400px;
+      margin: 0 16px; 
+    }
+  
+    .logout-button {
+      display: flex;
+      align-items: center;
+    }
+  }
+
+
+  .toolbar-spacer {
+    flex: 1;
+  }
+  
+  .search-field {
+    width: 300px; /* Ajusta el ancho del buscador según tus necesidades */
+  }
+
+  .example-spacer {
+    flex: 1 1 auto;
+  }
+  
+
+  .example-spacer {
+    flex: 1 1 auto;
+  }
+  
+
   

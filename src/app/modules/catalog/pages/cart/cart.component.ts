@@ -4,6 +4,7 @@ import { CartService } from '../../services/cart.service';
 import { FirebaseService } from '../../../../shared/services/firebase/firebase.service';
 import { LocationService } from '../../../../shared/services/location/location.service';
 import { user } from '@angular/fire/auth';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-cart',
@@ -12,11 +13,13 @@ import { user } from '@angular/fire/auth';
 })
 export class CartComponent implements OnInit {
   cartItems: any[] = [];
+  loading: boolean = false;
 
   constructor(
     private cartService: CartService,
     private firebaseService: FirebaseService,
-    private locationService: LocationService
+    private locationService: LocationService,
+    private toastr: ToastrService
   ) {}
 
   ngOnInit(): void {
@@ -35,6 +38,7 @@ export class CartComponent implements OnInit {
 
   //Write data on Realtime database
   async writeToDatabase() {
+    this.loading = true;
     try {
       // Get current location
       const currentPosition: GeolocationPosition =
@@ -49,20 +53,28 @@ export class CartComponent implements OnInit {
         throw new Error('User ID is undefined');
       }
       console.log('User ID:', userId);
-
+      //add lsitener
+      this.firebaseService.listenForDriverChanges(userId);
       // Write request to Realtime Database
       await this.firebaseService
         .writeData(`requests/${userId}`, {
           pick_up: positionString,
           drop_off: `-1.657107, -78.678071`,
-          products:this.cartItems,
-          status:'pending',
+          products: this.cartItems,
+          drivers: '',
+          status: 'pending',
+        }).then(()=>{
+          this.toastr.success('', 'Petición guardad correctamente');
         })
         .catch((error) => {
           console.log('ERROR: ', error);
         });
+
+
       console.log('Data written successfully');
+      this.loading = false;
     } catch (error) {
+      this.loading = false;
       console.error(
         'An error has occurred trying to write request on Firebase Realtime:',
         error
