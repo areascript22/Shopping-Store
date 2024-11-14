@@ -1,0 +1,16 @@
+<div class="cart-header">
+  <a [routerLink]="'/cart'" class="cart-icon">
+    🛒
+    <span *ngIf="cartItemsCount > 0" class="cart-count">{{ cartItemsCount }}</span>
+  </a>
+</div>
+
+<div class="product-grid">
+  <div *ngFor="let product of products" class="product-card">
+    <img [src]="product.image" alt="{{ product.title }}" />
+    <h2>{{ product.title }}</h2>
+    <p>{{ product.description | slice: 0:100 }}...</p>
+    <p><strong>Price: ${{ product.price }}</strong></p>
+    <button (click)="addToCart(product)">Add to Cart</button>
+  </div>
+</div>

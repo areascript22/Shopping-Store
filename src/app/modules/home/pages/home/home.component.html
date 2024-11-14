@@ -1,0 +1,40 @@
+<mat-toolbar>
+    <button mat-icon-button (click)="sidenav.toggle()">
+      <mat-icon *ngIf="!sidenav.opened">menu</mat-icon>
+      <mat-icon *ngIf="sidenav.opened">close</mat-icon>
+    </button>
+  
+</mat-toolbar>
+
+  <mat-sidenav-container>
+    <mat-sidenav>
+      <mat-nav-list>
+        <mat-list-item routerLink="/">
+          <mat-icon matListItemIcon>home</mat-icon>
+          <p>Inicio</p>
+        </mat-list-item>
+        <mat-list-item routerLink="/cart">
+          <mat-icon matListItemIcon>home</mat-icon>
+          <p>Carrito</p>
+        </mat-list-item>
+        <mat-list-item >
+          <mat-icon matListItemIcon>home</mat-icon>
+          <p>Historial</p>
+        </mat-list-item>
+       
+        <mat-list-item routerLink="/about">
+          <mat-icon matListItemIcon>info</mat-icon>
+          <p>Cerrar sesión</p>
+        </mat-list-item>
+      </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <div class="content">
+        <router-outlet>
+  
+        </router-outlet>
+      </div>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+  
+  
